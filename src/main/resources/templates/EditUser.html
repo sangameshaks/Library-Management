@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+</head>
+<body>
+    <h1>Edit User</h1>
+    <form id="editUserForm">
+        <label for="userId">User ID:</label>
+        <input type="text" id="userId" name="userId" required readonly><br><br>
+        
+        <label for="userName">User Name:</label>
+        <input type="text" id="userName" name="userName" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <label for="phoneNo">Phone Number:</label>
+        <input type="text" id="phoneNo" name="phoneNo" required><br><br>
+        
+        <label for="noOfBookIssued">No. of Books Issued:</label>
+        <input type="text" id="noOfBookIssued" name="noOfBookIssued" required><br><br>
+        
+        <input type="submit" value="Update User">
+    </form>
+
+    <script>
+        // Fetch user data from the backend
+        fetch('https://localhost:8084/{userId}') // Replace {userId} with the specific user ID
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(user => {
+                // Populate form fields with user data
+                document.getElementById('userId').value = user.userId;
+                document.getElementById('userName').value = user.userName;
+                document.getElementById('email').value = user.email;
+                document.getElementById('password').value = user.password;
+                document.getElementById('phoneNo').value = user.phoneNo;
+                document.getElementById('noOfBookIssued').value = user.noOfBookIssued;
+            })
+            .catch(error => {
+                console.error('There was a problem fetching user data:', error);
+                // Handle errors or display a message to the user
+            });
+
+        // Handle form submission
+        document.getElementById('editUserForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Get the updated values from form fields
+            const userId = document.getElementById('userId').value;
+            const userName = document.getElementById('userName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const phoneNo = document.getElementById('phoneNo').value;
+            const noOfBookIssued = document.getElementById('noOfBookIssued').value;
+
+            // Construct the updated user object
+            const updatedUser = {
+                userId: userId,
+                userName: userName,
+                email: email,
+                password: password,
+                phoneNo: phoneNo,
+                noOfBookIssued: noOfBookIssued
+            };
+
+            // Perform a PUT request to update user data (replace with your actual API call)
+            console.log('Updated User:', updatedUser);
+            alert('User information updated successfully!');
+            // You can perform an actual fetch() PUT request here to update the user data on the backend
+        });
+    </script>
+</body>
+</html>

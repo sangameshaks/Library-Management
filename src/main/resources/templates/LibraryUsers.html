@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>LibraryUsers</title>
+</head>
+<body onload="generateCaptcha()">
+ <form action="/addLibraryUser" method="post" onsubmit=" return validateCaptcha()">
+ <script type="text/javascript" src="captcha.js"></script>
+      <div class="mb-3">
+	    <label for="userName" class="form-label" style="color: deeppink">Name</label>
+	    <input type="text" class="form-control" name="userName">
+	  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+   <div class="form-group">
+    <label for="exampleInputPassword1">phoneNo</label>
+    <input type="text" name="phoneNo" class="form-control" id="exampleInputPassword1" placeholder="phoneNo">
+  </div><br>
+  <div  id="captcaid"></div>
+ <div class="form-group">
+    <input type="text" class="form-controll" id="exampleInputPassword11" placeholder="enter captcha">
+  </div>
+  <button type="submit" class="btn btn-primary" style="color:green" >Submit</button>
+</form>
+
+</body>
+</html>

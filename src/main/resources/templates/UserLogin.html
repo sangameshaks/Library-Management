@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>UserLogin Page</title>
+</head>
+<body onload="generateCaptcha()">
+ <form action="/UserFirstPage" method="post" onsubmit=" return validateCaptcha()">
+ <script type="text/javascript" src="captcha.js"></script>
+     <center><div class="mb-3">
+	    <label for="name" class="form-label" style="color: deeppink">Email</label>
+	    <input type="text" class="form-control" name="email">
+	  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div><br>
+  <div  id="captcaid"></div>
+ <div class="form-group">
+    <input type="text" class="form-controll" id="exampleInputPassword11" placeholder="enter captcha">
+  </div><br> 
+  <button type="submit" class="btn btn-primary" style="color:green" >Login</button>
+</form></center>
+
+</body>
+</html>
